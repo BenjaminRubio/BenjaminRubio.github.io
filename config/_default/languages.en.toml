@@ -1,0 +1,28 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Benjamin Rubio Orellana"
+
+[params]
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+logo = " "
+description = "Benjamin Rubio's personal website"
+
+[[params.author.links]]
+envelope = "mailto:ber2128@columbia.edu"
+
+[[params.author.links]]
+github = "https://github.com/BenjaminRubio"
+
+[[params.author.links]]
+linkedin = "https://www.linkedin.com/in/benjamin-rubio-o/"
+
+["params.author"]
+name = "Benjamin Rubio Orellana"
+image = "me25_sq.jpeg"
+headline = "IEOR PhD student @ Columbia University"
+bio = "holafadskfjna;sjkdfn"
