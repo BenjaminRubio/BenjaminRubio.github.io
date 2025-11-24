@@ -9,7 +9,7 @@ displayName = "EN"
 isoCode = "en"
 rtl = false
 dateFormat = "2 January 2006"
-logo = " "
+logo = "icon.svg"
 description = "Benjamin Rubio's personal website"
 
 [[params.author.links]]
