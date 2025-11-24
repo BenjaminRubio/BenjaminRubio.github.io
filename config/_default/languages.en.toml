@@ -21,6 +21,9 @@ github = "https://github.com/BenjaminRubio"
 [[params.author.links]]
 linkedin = "https://www.linkedin.com/in/benjamin-rubio-o/"
 
+[[params.author.links]]
+codeforces = "https://codeforces.com/profile/BenjaR"
+
 ["params.author"]
 name = "Benjamin Rubio Orellana"
 image = "me25_sq.jpeg"
