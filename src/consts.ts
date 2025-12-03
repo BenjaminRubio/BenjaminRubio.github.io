@@ -3,7 +3,7 @@ import type { SocialLink, Site } from '@/types'
 export const SITE: Site = {
   title: 'Benjamin Rubio',
   description:
-    'astro-erudite is a opinionated, unstyled blogging template—built with Astro, Tailwind, and shadcn/ui.',
+    "Benjamin Rubio's personal website",
   href: 'https://benjaminrubio.github.io',
   author: 'BenjaR',
   locale: 'en-US',
