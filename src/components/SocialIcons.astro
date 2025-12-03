@@ -1,37 +1,58 @@
 ---
 import Link from '@/components/Link.astro'
 import { buttonVariants } from '@/components/ui/button'
-import { ICON_MAP } from '@/consts'
 import type { SocialLink } from '@/types'
-import { Icon } from 'astro-icon/components'
 
 interface Props {
   links: SocialLink[]
 }
 
 const { links } = Astro.props
----
 
+// 1. Use Vite's import.meta.glob to get raw SVG strings.
+const allIcons = import.meta.glob('../../public/icons/*.svg', { as: 'raw', eager: true });
+
+// 2. Create a map of icon names (lowercase) to their cleaned SVG content
+const iconMap = new Map(
+  Object.entries(allIcons).map(([path, svgContent]) => {
+    // Extract filename from the path (e.g., /path/to/github.svg -> github)
+    const filename = path.split('/').pop()?.split('.')[0] ?? '';
+    
+    // Remove width and height attributes to ensure consistent sizing via CSS
+    const cleanedSvg = svgContent.replace(/width="[^"]*"|height="[^"]*"/g, '');
+
+    return [filename.toLowerCase(), cleanedSvg];
+  })
+);
+
+---
 <ul class="flex flex-wrap gap-2" role="list">
   {
-    links.map(({ href, label }) => (
-      <li>
-        <Link
-          href={href}
-          aria-label={label}
-          title={label}
-          class={buttonVariants({ variant: 'outline', size: 'icon' })}
-          external
-        >
-          <Icon
-            name={
-              ICON_MAP[label as keyof typeof ICON_MAP] ||
-              'lucide:message-circle-question'
-            }
-            class="size-4"
-          />
-        </Link>
-      </li>
-    ))
+    links.map(({ href, label }) => {
+      const iconContent = iconMap.get(label.toLowerCase());
+      return (
+        <li>
+          <Link
+            href={href}
+            aria-label={label}
+            title={label}
+            class={buttonVariants({ variant: 'outline', size: 'icon' })}
+            external
+          >
+            {/* 3. Render the cleaned SVG content directly */}
+            {iconContent && <Fragment set:html={iconContent} />}
+          </Link>
+        </li>
+      )
+    })
   }
 </ul>
+
+{/* 4. Style the inlined SVGs for consistent size and color */}
+<style>
+  ul li a svg {
+    width: 1.5rem; /* size-6 */
+    height: 1.5rem; /* size-6 */
+    fill: currentColor;
+  }
+</style>

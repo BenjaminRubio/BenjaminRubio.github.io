@@ -2,68 +2,60 @@
 import BlogCard from '@/components/BlogCard.astro'
 import Link from '@/components/Link.astro'
 import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import SocialIcons from '@/components/SocialIcons.astro'
 import { buttonVariants } from '@/components/ui/button'
-import { SITE } from '@/consts'
+import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
-import { getRecentPosts } from '@/lib/data-utils'
+import { getAllProjects, getRecentPosts } from '@/lib/data-utils'
 
-const blog = await getRecentPosts(SITE.featuredPostCount)
+const posts = await getRecentPosts(SITE.featuredPostCount)
+const projects = await getAllProjects()
 ---
 
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="Home" />
-  <section class="rounded-lg border">
-    <div class="flex flex-col space-y-1.5 p-6">
-      <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
-      <p class="text-muted-foreground text-sm">
-        /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
-      </p>
-    </div>
-    <div class="p-6 pt-0">
-      <p class="text-muted-foreground mb-2 text-sm">
-        astro-erudite is an opinionated, unstyled static blogging template built
-        with <Link
-          href="https://astro.build"
-          class="text-foreground"
-          external
-          underline>Astro</Link
-        >, <Link
-          href="https://tailwindcss.com"
-          class="text-foreground"
-          external
-          underline>Tailwind</Link
-        >, and <Link
-          href="https://ui.shadcn.com"
-          class="text-foreground"
-          external
-          underline>shadcn/ui</Link
-        >. Extraordinarily loosely based on the <Link
-          href="https://astro-micro.vercel.app/"
-          class="text-foreground"
-          external
-          underline>Astro Micro</Link
-        > theme.
-      </p>
-      <p class="text-muted-foreground text-sm">
-        To use this template, check out the <Link
-          href="https://github.com/jktrn/astro-erudite"
-          class="text-foreground"
-          underline
-          external>GitHub</Link
-        > repository. To learn more about why this template exists, read this blog
-        post: <Link
-          href="/blog/the-state-of-static-blogs"
-          class="text-foreground"
-          underline>The State of Static Blogs in 2024</Link
-        >.
-      </p>
+
+  <!-- User Profile Section -->
+  <section class="mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+      <div class="md:col-span-1 flex justify-center">
+        <img
+          src="/static/me25_sq.jpeg"
+          alt="Benjamin Rubio"
+          class="rounded-full w-32 h-32 md:w-40 md:h-40 object-cover border"
+        />
+      </div>
+      <div class="md:col-span-3">
+        <h1 class="text-3xl font-bold mb-2">Benjamin Rubio</h1>
+        <p class="text-muted-foreground mb-4">
+          IEOR PhD Student at Columbia University. Interested in quantitative research, technology, and competitive programming.
+        </p>
+        <SocialIcons links={SOCIAL_LINKS} />
+      </div>
     </div>
   </section>
+
+  <!-- Projects Section -->
+  <section class="flex flex-col gap-y-4 mb-12">
+    <h2 class="text-2xl font-medium">Projects</h2>
+    <ul class="flex flex-col gap-y-4">
+      {
+        projects.map((project) => (
+          <li>
+            <ProjectCard project={project} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Latest Posts Section -->
   <section class="flex flex-col gap-y-4">
     <h2 class="text-2xl font-medium">Latest posts</h2>
     <ul class="flex flex-col gap-y-4">
       {
-        blog.map((post) => (
+        posts.map((post) => (
           <li>
             <BlogCard entry={post} />
           </li>
