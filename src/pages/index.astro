@@ -8,6 +8,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getAllProjects, getRecentPosts } from '@/lib/data-utils'
+import locationIcon from '../../public/icons/location.svg?raw';
 
 const posts = await getRecentPosts(SITE.featuredPostCount)
 const projects = await getAllProjects()
@@ -28,9 +29,15 @@ const projects = await getAllProjects()
       </div>
       <div class="md:col-span-3">
         <h1 class="text-3xl font-bold mb-2">Benjamín Rubio Orellana</h1>
-        <p class="text-muted-foreground mb-4">
-          IEOR PhD Student @ Columbia University.
+        <p class="text-muted-foreground mb-2">
+          PhD Student @ Columbia University.
         </p>
+        <div class="flex items-center text-muted-foreground mb-4">
+          <div class="size-4 shrink-0">
+            <Fragment set:html={locationIcon} />
+          </div>
+          <span class="ml-2">New York, NY, USA</span>
+        </div>
         <SocialIcons links={SOCIAL_LINKS} />
       </div>
     </div>
