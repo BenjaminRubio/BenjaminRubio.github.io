@@ -28,7 +28,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'GitHub',
   },
   {
-    href: 'https://https://www.linkedin.com/in/benjamin-rubio-o',
+    href: 'https://www.linkedin.com/in/benjamin-rubio-o',
     label: 'Linkedin',
   },
   {
