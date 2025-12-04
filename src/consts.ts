@@ -21,18 +21,18 @@ export const NAV_LINKS: SocialLink[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     href: 'mailto:ber2128@columbia.edu',
-    label: 'Email',
+    label: 'email',
   },
   {
     href: 'https://github.com/BenjaminRubio',
-    label: 'GitHub',
+    label: 'github',
   },
   {
     href: 'https://www.linkedin.com/in/benjamin-rubio-o',
-    label: 'Linkedin',
+    label: 'linkedin',
   },
   {
     href: 'https://codeforces.com/profile/BenjaR',
-    label: 'Codeforces',
+    label: 'codeforces',
   },
 ]
