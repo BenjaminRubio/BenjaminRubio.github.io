@@ -9,6 +9,7 @@ export const SITE: Site = {
   locale: 'en-US',
   featuredPostCount: 0,
   postsPerPage: 5,
+  profileImage: '/static/me25_sq.jpeg',
 }
 
 export const NAV_LINKS: SocialLink[] = [
