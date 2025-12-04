@@ -18,8 +18,8 @@ const projects = await getAllProjects()
   <PageHead slot="head" title="Home" />
 
   <!-- User Profile Section -->
-  <section class="mb-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+  <section class="rounded-lg border mb-12">
+    <div class="p-6 pt-6 grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
       <div class="md:col-span-1 flex justify-center">
         <img
           src="/static/me25_sq.jpeg"
@@ -44,10 +44,11 @@ const projects = await getAllProjects()
   </section>
 
   <!-- About Section -->
-  <section class="mb-12">
+  <section class="flex flex-col gap-y-4 mb-12">
+    <h2 class="text-2xl font-medium">About</h2>
     <div class="prose">
       <p>
-        About. TODO
+        TODO
       </p>
     </div>
   </section>
